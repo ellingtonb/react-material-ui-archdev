@@ -230,7 +230,7 @@ const Header = props => {
                 setSelectedTab(null);
                 break;
         }*/
-    }, [props.selectedTab, props.selectedIndex, menuOptions, menuItems]);
+    }, [props, menuOptions, menuItems]);
 
     const drawer = (
         <React.Fragment>
