@@ -122,13 +122,11 @@ const Header = props => {
     const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
     const [openDrawer, setOpenDrawer] = useState(false);
-    const [selectedTab, setSelectedTab] = useState(0);
     const [anchorEl, setAnchorEl] = useState(null);
     const [openMenu, setOpenMenu] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(0);
 
     const tabChangeHandler = (event, value) => {
-        setSelectedTab(value);
+        props.setSelectedTab(value);
     };
 
     const handleClick = event => {
@@ -144,7 +142,7 @@ const Header = props => {
     const handleMenuItemClick = (event, index) => {
         setAnchorEl(null);
         setOpenMenu(false);
-        setSelectedIndex(index);
+        props.setSelectedIndex(index);
     };
 
     const menuOptions = [
@@ -173,10 +171,10 @@ const Header = props => {
         [...menuOptions, ...menuItems].forEach(route => {
             switch (window.location.pathname) {
                 case route.link:
-                    if (selectedTab !== route.index) {
-                        setSelectedTab(route.index);
-                        if (route.subIndex && route.subIndex !== selectedIndex) {
-                            setSelectedIndex(route.subIndex);
+                    if (props.selectedTab !== route.index) {
+                        props.setSelectedTab(route.index);
+                        if (route.subIndex && route.subIndex !== props.selectedIndex) {
+                            props.setSelectedIndex(route.subIndex);
                         }
                     }
                     break;
@@ -232,7 +230,7 @@ const Header = props => {
                 setSelectedTab(null);
                 break;
         }*/
-    }, [selectedTab, selectedIndex, menuOptions, menuItems]);
+    }, [props.selectedTab, props.selectedIndex, menuOptions, menuItems]);
 
     const drawer = (
         <React.Fragment>
@@ -255,10 +253,10 @@ const Header = props => {
                                 onClick={(event) => { setOpenDrawer(false); tabChangeHandler(event, item.index); }}
                                 component={Link}
                                 to={item.link}
-                                selected={selectedTab === item.index}
+                                selected={props.selectedTab === item.index}
                             >
                                 <ListItemText
-                                    className={clsx(classes.drawerItem, {[classes.drawerItemSelected]: selectedTab === item.index})}
+                                    className={clsx(classes.drawerItem, {[classes.drawerItemSelected]: props.selectedTab === item.index})}
                                     disableTypography
                                 >{item.name}</ListItemText>
                             </ListItem>
@@ -288,7 +286,7 @@ const Header = props => {
     const tabs = (
         <React.Fragment>
             <Tabs
-                value={selectedTab}
+                value={props.selectedTab}
                 onChange={tabChangeHandler}
                 className={classes.tabContainer}
                 indicatorColor={"primary"}
@@ -337,7 +335,7 @@ const Header = props => {
                             component={Link}
                             to={option.link}
                             classes={{root: classes.menuItem}}
-                            selected={selectedIndex === index && selectedTab === 1}
+                            selected={props.selectedIndex === index && props.selectedTab === 1}
                         >{option.name}</MenuItem>
                     ))
                 }
