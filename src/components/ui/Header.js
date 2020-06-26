@@ -72,6 +72,9 @@ const useStyles = makeStyles(theme => ({
         marginLeft: '25px',
         marginRight: '25px',
         height: '30px',
+        "&:hover": {
+            backgroundColor: theme.palette.secondary.light
+        }
     },
     menu: {
         backgroundColor: theme.palette.common.blue,
@@ -182,54 +185,6 @@ const Header = props => {
                     break;
             }
         })
-        /*switch (window.location.pathname) {
-            case "/revolution":
-                if (selectedTab !== 2) {
-                    setSelectedTab(2);
-                }
-                break;
-            case "/about":
-                if (selectedTab !== 3) {
-                    setSelectedTab(3);
-                }
-                break;
-            case "/contact":
-                if (selectedTab !== 4) {
-                    setSelectedTab(4);
-                }
-                break;
-            case "/":
-                if (selectedTab !== 0) {
-                    setSelectedTab(0);
-                }
-                break;
-            case "/services":
-                if (selectedTab !== 1) {
-                    setSelectedTab(1);
-                }
-                break;
-            case "/customsoftware":
-                if (selectedIndex !== 1) {
-                    setSelectedTab(1);
-                    setSelectedIndex(1);
-                }
-                break;
-            case "/mobileapps":
-                if (selectedIndex !== 2) {
-                    setSelectedTab(1);
-                    setSelectedIndex(2);
-                }
-                break;
-            case "/websites":
-                if (selectedIndex !== 3) {
-                    setSelectedTab(1);
-                    setSelectedIndex(3);
-                }
-                break;
-            default:
-                setSelectedTab(null);
-                break;
-        }*/
     }, [props, menuOptions, menuItems]);
 
     const drawer = (
