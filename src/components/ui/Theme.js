@@ -45,6 +45,11 @@ const theme = createMuiTheme({
             color: customColors.arcBlue,
             lineHeight: 1.5
         },
+        h3: {
+            fontFamily: "Pacifico",
+            fontSize: "2.5rem",
+            color: customColors.arcBlue
+        },
         h4: {
             fontFamily: "Raleway",
             fontSize: '1.5rem',
