@@ -149,10 +149,30 @@ const Header = props => {
     };
 
     const menuOptions = [
-        {name: "Services", link: "/services", index: 1, subIndex: 0},
-        {name: "Custom Software Development", link: "/customsoftware", index: 1, subIndex: 1},
-        {name: "Mobile Apps Development", link: "/mobileapps", index: 1, subIndex: 2},
-        {name: "Websites Development", link: "/websites", index: 1, subIndex: 3}
+        {
+            name: "Services",
+            link: "/services",
+            index: 1,
+            subIndex: 0
+        },
+        {
+            name: "Custom Software Development",
+            link: "/customsoftware",
+            index: 1,
+            subIndex: 1
+        },
+        {
+            name: "iOS/Android App Development",
+            link: "/mobileapps",
+            index: 1,
+            subIndex: 2
+        },
+        {
+            name: "Website Development",
+            link: "/websites",
+            index: 1,
+            subIndex: 3
+        }
     ];
 
     const menuItems = [
