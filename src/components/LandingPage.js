@@ -17,6 +17,7 @@ import infoBackground from '../assets/infoBackground.svg';
 import ButtonArrow from "./ui/ButtonArrow";
 import {useTheme} from "@material-ui/styles";
 import CallToAction from "./ui/CallToAction";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     mainContainer: {
@@ -142,6 +143,14 @@ const LandingPage = props => {
         }
     };
 
+    const tabChangeHandler = (event, value) => {
+        props.setSelectedTab(value);
+    };
+
+    const indexChangeHandler = (event, index) => {
+        props.setSelectedIndex(index);
+    };
+
     return (
         <Grid container direction={"column"} className={classes.mainContainer}>
             <Grid item> {/*-- HERO BLOCK --*/}
@@ -154,10 +163,22 @@ const LandingPage = props => {
                         </Typography>
                         <Grid container justify={"center"} spacing={2} className={classes.buttonContainer}>
                             <Grid item>
-                                <Button className={classes.estimateButton} variant={"contained"}>Free Estimate</Button>
+                                <Button
+                                    className={classes.estimateButton}
+                                    variant={"contained"}
+                                    component={Link}
+                                    to={"/estimate"}
+                                    onClick={tabChangeHandler.bind(this, this, null)}
+                                >Free Estimate</Button>
                             </Grid>
                             <Grid item>
-                                <Button variant={"outlined"} className={classes.learnButtonHero}>
+                                <Button
+                                    variant={"outlined"}
+                                    className={classes.learnButtonHero}
+                                    component={Link}
+                                    to={"/revolution"}
+                                    onClick={tabChangeHandler.bind(this, this, 2)}
+                                >
                                     <span style={{ marginRight: 4 }}>Learn More</span>
                                     <ButtonArrow
                                         width={15}
@@ -198,7 +219,14 @@ const LandingPage = props => {
                             Complete digital solution, from investigation to{" "}
                             <span className={classes.specialText}>celebration</span>.
                         </Typography>
-                        <Button variant={"outlined"} className={classes.learnButton} style={{ marginTop: "0.5em" }}>
+                        <Button
+                            variant={"outlined"}
+                            className={classes.learnButton}
+                            style={{ marginTop: "0.5em" }}
+                            component={Link}
+                            to={"/customsoftware"}
+                            onClick={(event) => { tabChangeHandler(event, 1); indexChangeHandler(event, 1); }}
+                        >
                             <span style={{ marginRight: 4 }}>Learn More</span>
                             <ButtonArrow
                                 width={10}
@@ -232,7 +260,14 @@ const LandingPage = props => {
                             Integrate your web experience or create a standalone
                             app{ matchesSM ? null : <br /> }with either mobile platform.
                         </Typography>
-                        <Button variant={"outlined"} className={classes.learnButton} style={{ marginTop: "0.5em" }}>
+                        <Button
+                            variant={"outlined"}
+                            className={classes.learnButton}
+                            style={{ marginTop: "0.5em" }}
+                            component={Link}
+                            to={"/mobileapps"}
+                            onClick={(event) => { tabChangeHandler(event, 1); indexChangeHandler(event, 2); }}
+                        >
                             <span style={{ marginRight: 4 }}>Learn More</span>
                             <ButtonArrow
                                 width={10}
@@ -268,7 +303,14 @@ const LandingPage = props => {
                         <Typography variant={"subtitle1"}>
                             Optimized for Search Engines, built to speed.
                         </Typography>
-                        <Button variant={"outlined"} className={classes.learnButton} style={{ marginTop: "0.5em" }}>
+                        <Button
+                            variant={"outlined"}
+                            className={classes.learnButton}
+                            style={{ marginTop: "0.5em" }}
+                            component={Link}
+                            to={"/websites"}
+                            onClick={(event) => { tabChangeHandler(event, 1); indexChangeHandler(event, 3); }}
+                        >
                             <span style={{ marginRight: 4 }}>Learn More</span>
                             <ButtonArrow
                                 width={10}
@@ -294,7 +336,13 @@ const LandingPage = props => {
                                     <Typography variant={"subtitle1"} gutterBottom>
                                         Visionary insights couple with cutting-edge technology is a recipe for revolution.
                                     </Typography>
-                                    <Button variant={"outlined"} className={classes.learnButtonHero}>
+                                    <Button
+                                        variant={"outlined"}
+                                        className={classes.learnButtonHero}
+                                        component={Link}
+                                        to={"/revolution"}
+                                        onClick={tabChangeHandler.bind(this, this, 2)}
+                                    >
                                         <span style={{ marginRight: 4 }}>Learn More</span>
                                         <ButtonArrow
                                             width={15}
@@ -322,7 +370,11 @@ const LandingPage = props => {
                                 <Grid item>
                                     <Button variant={"outlined"}
                                             className={classes.learnButton}
-                                            style={{ marginTop: "0.5em", color: "white", borderColor: "white" }}>
+                                            style={{ marginTop: "0.5em", color: "white", borderColor: "white" }}
+                                            component={Link}
+                                            to={"/about"}
+                                            onClick={tabChangeHandler.bind(this, this, 3)}
+                                    >
                                         <span style={{ marginRight: 4 }}>Learn More</span>
                                         <ButtonArrow
                                             width={10}
@@ -340,7 +392,11 @@ const LandingPage = props => {
                                 <Grid item>
                                     <Button variant={"outlined"}
                                             className={classes.learnButton}
-                                            style={{ marginTop: "0.5em", color: "white", borderColor: "white" }}>
+                                            style={{ marginTop: "0.5em", color: "white", borderColor: "white" }}
+                                            component={Link}
+                                            to={"/contact"}
+                                            onClick={tabChangeHandler.bind(this, this, 3)}
+                                    >
                                         <span style={{ marginRight: 4 }}>Learn More</span>
                                         <ButtonArrow
                                             width={10}
@@ -356,7 +412,10 @@ const LandingPage = props => {
                 </Grid>
             </Grid>
             <Grid item>
-                <CallToAction />
+                <CallToAction
+                    selectedTab={props.selectedTab}
+                    setSelectedTab={props.setSelectedTab}
+                />
             </Grid>
         </Grid>
     );

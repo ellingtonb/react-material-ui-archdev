@@ -32,7 +32,14 @@ function App() {
                         setSelectedTab={setSelectedTab}
                     />
                     <Switch>
-                        <Route exact path={"/"} component={LandingPage} />
+                        <Route exact path={"/"} component={() =>
+                            <LandingPage
+                                selectedTab={selectedTab}
+                                setSelectedTab={setSelectedTab}
+                                selectedIndex={selectedIndex}
+                                setSelectedIndex={setSelectedIndex}
+                            />
+                        } />
                         <Route exact path={"/services"} component={() => <div>Services</div>} />
                         <Route exact path={"/customsoftware"} component={() => <div>Custom Software</div>} />
                         <Route exact path={"/mobileapps"} component={() => <div>Mobile Apps</div>} />

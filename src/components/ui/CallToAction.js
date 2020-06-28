@@ -6,8 +6,8 @@ import Button from "@material-ui/core/Button";
 import ButtonArrow from "./ButtonArrow";
 import background from '../../assets/background.jpg';
 import mobileBackground from '../../assets/mobileBackground.jpg';
-import infoBackground from "../../assets/infoBackground.svg";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     learnButton: {
@@ -44,6 +44,9 @@ const useStyles = makeStyles(theme => ({
             marginTop: "2em",
             marginLeft: 0,
             marginRight: 0
+        },
+        "&:hover": {
+            backgroundColor: theme.palette.secondary.light
         }
     }
 }));
@@ -52,6 +55,10 @@ const CallToAction = props => {
     const classes = useStyles();
     const theme = useTheme();
     const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+
+    const tabChangeHandler = (event, value) => {
+        props.setSelectedTab(value);
+    };
 
     return (
         <Grid
@@ -73,6 +80,9 @@ const CallToAction = props => {
                         <Grid container justify={matchesSM ? "center" : undefined} item>
                             <Button variant={"outlined"}
                                     className={classes.learnButton}
+                                    component={Link}
+                                    to={"/revolution"}
+                                    onClick={tabChangeHandler.bind(this, this, 2)}
                             >
                                 <span style={{ marginRight: 4 }}>Learn More</span>
                                 <ButtonArrow
@@ -86,7 +96,13 @@ const CallToAction = props => {
                 </Grid>
             </Grid>
             <Grid item>
-                <Button variant={"contained"} className={classes.estimateButton}>Free Estimate</Button>
+                <Button
+                    variant={"contained"}
+                    className={classes.estimateButton}
+                    component={Link}
+                    to={"/estimate"}
+                    onClick={tabChangeHandler.bind(this, this, null)}
+                >Free Estimate</Button>
             </Grid>
         </Grid>
     );
