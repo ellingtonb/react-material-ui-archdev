@@ -16,11 +16,12 @@ import revolutionBackground from '../assets/repeatingBackground.svg';
 import infoBackground from '../assets/infoBackground.svg';
 import ButtonArrow from "./ui/ButtonArrow";
 import {useTheme} from "@material-ui/styles";
+import CallToAction from "./ui/CallToAction";
 
 const useStyles = makeStyles(theme => ({
     mainContainer: {
         marginTop: "3em",
-        marginBottom: "2em",
+        /*marginBottom: "2em",*/
         [theme.breakpoints.down("md")]: {
             marginTop: "1em",
         },
@@ -353,6 +354,9 @@ const LandingPage = props => {
                     </Grid>
                     <div className={classes.infoBackground} />
                 </Grid>
+            </Grid>
+            <Grid item>
+                <CallToAction />
             </Grid>
         </Grid>
     );
