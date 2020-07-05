@@ -6,6 +6,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Footer from "./ui/Footer";
 import LandingPage from "./LandingPage";
 import {makeStyles} from "@material-ui/core/styles";
+import Services from "./Services";
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -40,7 +41,14 @@ function App() {
                                 setSelectedIndex={setSelectedIndex}
                             />
                         } />
-                        <Route exact path={"/services"} component={() => <div>Services</div>} />
+                        <Route exact path={"/services"} component={() =>
+                            <Services
+                                selectedTab={selectedTab}
+                                setSelectedTab={setSelectedTab}
+                                selectedIndex={selectedIndex}
+                                setSelectedIndex={setSelectedIndex}
+                            />
+                        } />
                         <Route exact path={"/customsoftware"} component={() => <div>Custom Software</div>} />
                         <Route exact path={"/mobileapps"} component={() => <div>Mobile Apps</div>} />
                         <Route exact path={"/websites"} component={() => <div>Websites</div>} />
