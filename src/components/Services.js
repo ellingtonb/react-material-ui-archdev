@@ -80,7 +80,7 @@ const Services = props => {
                 >
                     <Grid item style={{
                         textAlign: matchesSM ? 'center' : undefined,
-                        width: matchesSM ? undefined : "32em"
+                        width: matchesSM ? undefined : "33em"
                     }}>
                         <Typography variant={"h4"}>
                             iOS/Android App Development
@@ -170,8 +170,8 @@ const Services = props => {
                     justify={matchesSM ? 'center' : 'flex-end'}
                 >
                     <Grid item style={{
-                        textAlign: matchesSM ? 'center' : 'flex-end',
-                        width: matchesSM ? undefined : "32em"
+                        textAlign: matchesSM ? 'center' : undefined,
+                        width: matchesSM ? undefined : "33em"
                     }}>
                         <Typography variant={"h4"}>
                             Website Development
