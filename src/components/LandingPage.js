@@ -361,10 +361,16 @@ const LandingPage = props => {
                 <Grid container style={{ height: "35em" }} alignItems={"center"} direction={"row"}>
                     <Grid item container style={{ position: "absolute" }}
                           direction={matchesXS ? "column" : "row"}
-                          spacing={matchesXS ? 2 : 0}
                     >
-                        <Grid item sm style={{ marginLeft: matchesXS ? 0 : matchesSM ? '2em' : "5em", textAlign: matchesXS ? "center" : "left" }}>
-                            <Grid container direction={"column"}>
+                        <Grid item sm style={{
+                            marginLeft: matchesXS ? 0 : matchesSM ? '2em' : "5em",
+                            textAlign: matchesXS ? "center" : "left"
+                        }}>
+                            <Grid
+                                container
+                                direction={"column"}
+                                style={{ marginBottom: matchesXS ? "10em" : 0 }}
+                            >
                                 <Typography variant={"h2"} style={{ color: "white" }}>About Us</Typography>
                                 <Typography variant={"subtitle2"}>Let's get personal.</Typography>
                                 <Grid item>
