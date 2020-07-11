@@ -7,6 +7,11 @@ import Footer from "./ui/Footer";
 import LandingPage from "./LandingPage";
 import {makeStyles} from "@material-ui/core/styles";
 import Services from "./Services";
+import CustomSoftware from "./CustomSoftware";
+import MobileApps from "./MobileApps";
+import Websites from "./Websites";
+import Revolution from "./Revolution";
+import About from "./About";
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -49,11 +54,46 @@ function App() {
                                 setSelectedIndex={setSelectedIndex}
                             />
                         } />
-                        <Route exact path={"/customsoftware"} component={() => <div>Custom Software</div>} />
-                        <Route exact path={"/mobileapps"} component={() => <div>Mobile Apps</div>} />
-                        <Route exact path={"/websites"} component={() => <div>Websites</div>} />
-                        <Route exact path={"/revolution"} component={() => <div>The Revolution</div>} />
-                        <Route exact path={"/about"} component={() => <div>About Us</div>} />
+                        <Route exact path={"/customsoftware"} component={() =>
+                            <CustomSoftware
+                                selectedTab={selectedTab}
+                                setSelectedTab={setSelectedTab}
+                                selectedIndex={selectedIndex}
+                                setSelectedIndex={setSelectedIndex}
+                            />
+                        } />
+                        <Route exact path={"/mobileapps"} component={() =>
+                            <MobileApps
+                                selectedTab={selectedTab}
+                                setSelectedTab={setSelectedTab}
+                                selectedIndex={selectedIndex}
+                                setSelectedIndex={setSelectedIndex}
+                            />
+                        } />
+                        <Route exact path={"/websites"} component={() =>
+                            <Websites
+                                selectedTab={selectedTab}
+                                setSelectedTab={setSelectedTab}
+                                selectedIndex={selectedIndex}
+                                setSelectedIndex={setSelectedIndex}
+                            />
+                        } />
+                        <Route exact path={"/revolution"} component={() =>
+                            <Revolution
+                                selectedTab={selectedTab}
+                                setSelectedTab={setSelectedTab}
+                                selectedIndex={selectedIndex}
+                                setSelectedIndex={setSelectedIndex}
+                            />
+                        } />
+                        <Route exact path={"/about"} component={() =>
+                            <About
+                                selectedTab={selectedTab}
+                                setSelectedTab={setSelectedTab}
+                                selectedIndex={selectedIndex}
+                                setSelectedIndex={setSelectedIndex}
+                            />
+                        } />
                         <Route exact path={"/contact"} component={() => <div>Contact Us</div>} />
                         <Route exact path={"/estimate"} component={() => <div>Estimate</div>} />
                     </Switch>
