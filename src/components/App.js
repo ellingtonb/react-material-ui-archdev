@@ -12,6 +12,7 @@ import MobileApps from "./MobileApps";
 import Websites from "./Websites";
 import Revolution from "./Revolution";
 import About from "./About";
+import Contact from "./Contact";
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -94,7 +95,14 @@ function App() {
                                 setSelectedIndex={setSelectedIndex}
                             />
                         } />
-                        <Route exact path={"/contact"} component={() => <div>Contact Us</div>} />
+                        <Route exact path={"/contact"} component={() =>
+                            <Contact
+                                selectedTab={selectedTab}
+                                setSelectedTab={setSelectedTab}
+                                selectedIndex={selectedIndex}
+                                setSelectedIndex={setSelectedIndex}
+                            />
+                        } />
                         <Route exact path={"/estimate"} component={() => <div>Estimate</div>} />
                     </Switch>
                     <Footer

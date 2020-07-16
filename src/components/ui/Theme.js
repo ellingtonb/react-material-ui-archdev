@@ -80,6 +80,28 @@ const theme = createMuiTheme({
             fontFamily: "Roboto",
             fontWeight: "bold",
         }
+    },
+    overrides: {
+        MuiInputLabel: {
+            root: {
+                color: customColors.arcBlue,
+                fontSize: "1rem"
+            }
+        },
+        MuiInput: {
+            root: {
+                color: customColors.arcGrey,
+                fontWeight: 300
+            },
+            underline: {
+                "&:before": {
+                    borderBottom: `2px solid ${customColors.arcBlue}`
+                },
+                "&:hover:not($disabled):not($focused):not($error):before": {
+                    borderBottom: `2px solid ${customColors.arcBlue}`
+                }
+            }
+        }
     }
 });
 
