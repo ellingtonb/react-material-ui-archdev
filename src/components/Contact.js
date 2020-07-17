@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {makeStyles, useTheme} from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Hidden from '@material-ui/core/Hidden';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import background from '../assets/background.jpg';
@@ -239,14 +238,14 @@ const Contact = props => {
                         </Grid>
                         <Grid item container justify={"center"} style={{ marginTop: "2em" }}>
                             <Button
-                                /*disabled={
+                                disabled={
                                     name.length === 0 ||
                                     message.length === 0 ||
                                     phoneHelper.length !== 0 ||
                                     emailHelper.length !== 0 ||
                                     email.length === 0 ||
                                     phone.length === 0
-                                }*/
+                                }
                                 variant={"contained"}
                                 className={classes.sendButton}
                                 onClick={setOpen.bind(this, true)}
@@ -340,14 +339,14 @@ const Contact = props => {
                             </Grid>
                             <Grid item>
                                 <Button
-                                    /*disabled={
+                                    disabled={
                                         name.length === 0 ||
                                         message.length === 0 ||
                                         phoneHelper.length !== 0 ||
                                         emailHelper.length !== 0 ||
                                         email.length === 0 ||
                                         phone.length === 0
-                                    }*/
+                                    }
                                     variant={"contained"}
                                     className={classes.confirmationButton}
                                 >
