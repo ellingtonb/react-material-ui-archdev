@@ -14,6 +14,9 @@ import {Link} from "react-router-dom";
 import ButtonArrow from "./ui/ButtonArrow";
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
+import CircularProgress from "@material-ui/core/CircularProgress";
+import axios from 'axios';
+import Snackbar from "@material-ui/core/Snackbar";
 
 const useStyles = makeStyles(theme => ({
     background: {
@@ -106,6 +109,55 @@ const Contact = props => {
     const [phoneHelper, setPhoneHelper] = useState('');
     const [message, setMessage] = useState('');
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [alert, setAlert] = useState({
+        open: false,
+        message: "",
+        backgroundColor: ""
+    });
+
+    const onConfirm = event => {
+        setLoading(true);
+        axios.get(
+            'https://us-central1-ellingtonb-react.cloudfunctions.net/sendMail',
+            {params: {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    message: message
+                }}
+        )
+            .then(res => {
+                console.log(res);
+                setLoading(false);
+                setOpen(false);
+                setName("");
+                setEmail("");
+                setPhone("");
+                setMessage("");
+                setAlert({
+                    open: true,
+                    message: "Message sent successfully!",
+                    backgroundColor: "#4BB543"
+                });
+            })
+            .catch(error => {
+                console.log(error);
+                setLoading(false);
+                setAlert({
+                    open: true,
+                    message: "Something went wrong, please, try again!",
+                    backgroundColor: "#FF3232"
+                });
+            });
+    };
+
+    const buttonContents = (
+        <React.Fragment>
+            Send Message
+            <img src={airplane} alt={"Paper Airplane"} style={{ marginLeft: "0.6em" }} />
+        </React.Fragment>
+    );
 
     const onChange = event => {
         let valid;
@@ -250,8 +302,7 @@ const Contact = props => {
                                 className={classes.sendButton}
                                 onClick={setOpen.bind(this, true)}
                             >
-                                Send Message
-                                <img src={airplane} alt={"Paper Airplane"} style={{ marginLeft: "0.6em" }} />
+                                {buttonContents}
                             </Button>
                         </Grid>
                     </Grid>
@@ -349,15 +400,28 @@ const Contact = props => {
                                     }
                                     variant={"contained"}
                                     className={classes.confirmationButton}
+                                    onClick={onConfirm}
                                 >
-                                    Send Message
-                                    <img src={airplane} alt={"Paper Airplane"} style={{ marginLeft: "0.6em" }} />
+                                    {loading ? <CircularProgress size={30} /> : buttonContents}
                                 </Button>
                             </Grid>
                         </Grid>
                     </Grid>
                 </DialogContent>
             </Dialog>
+            <Snackbar
+                open={alert.open}
+                message={alert.message}
+                ContentProps={{
+                    style: {backgroundColor: alert.backgroundColor}
+                }}
+                anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "center"
+                }}
+                onClose={() => setAlert({...alert, open: false})}
+                autoHideDuration={4000}
+            />
             <Grid
                 item
                 container
